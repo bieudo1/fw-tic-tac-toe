@@ -1,43 +1,35 @@
 // import React, { useState } from "react";
+import History from "./History";
 import Square from "./Square";
 
-export default function Board({ squares, handleClick, historys }) {
-  //  const setSquare = (idx) => {
-  //   return (
-  //     [...Array(9)].map((_, idx) => {
-  //       return(
-  //     <Square
-  //       handleClick={handleClick}
-  //       id={idx}
-  //       squarePick={squares[idx]}
-  //     />
-  //     )}
-  //     )
-  //   );
-  // }
 
-  const moves = historys.map((step, move) => {
-    const description = move ? `Move #${move}` : 'Game start';
-    return <li key={move} className="board-row">{description}</li>
-  });
+export default function Board({history, squares, handleClick, histories, handleJump }) {
+
+ 
+
+
+
   return (
     <div className="board">
       <ul className="squares">
-        { [...Array(9)].map((_, idx) => {
-          return (
-              <Square
-                handleClick={handleClick}
-                id={idx}
-                squarePick={squares[idx]}
-              />
-          );
-        })}
+        <div>
+        <Square handleClick={handleClick} id={0} squarePick={squares[0]}/> 
+        <Square handleClick={handleClick} id={1} squarePick={squares[1]}/>
+        <Square handleClick={handleClick} id={2} squarePick={squares[2]}/> 
+         </div>
+         <div>
+        <Square handleClick={handleClick} id={3} squarePick={squares[3]}/> 
+        <Square handleClick={handleClick} id={4} squarePick={squares[4]}/>
+        <Square handleClick={handleClick} id={5} squarePick={squares[5]}/> 
+         </div>
+         <div>
+        <Square handleClick={handleClick} id={6} squarePick={squares[6]}/> 
+        <Square handleClick={handleClick} id={7} squarePick={squares[7]}/>
+        <Square handleClick={handleClick} id={8} squarePick={squares[8]}/> 
+         </div>
       </ul>
       <div>
-       {moves}
-        {/* <div className="board-row">"Your code here"</div>
-        <div className="board-row">"Your code here"</div>
-        <div className="board-row">"Your code here"</div> */}
+      <History history={history} handleJump={handleJump} />
       </div>
     </div>
   );
